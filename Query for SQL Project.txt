@@ -1,0 +1,115 @@
+CREATE TABLE students(
+  id INT NOT NULL,
+  first_name varchar,
+  last_name varchar,
+  email varchar,
+  address varchar,
+  date_of_birth datetime,
+  gender varchar
+);
+
+CREATE TABLE lecturers(
+  id INT NOT NULL,
+  first_name varchar,
+  last_name varchar,
+  email varchar,
+  address varchar,
+  date_of_birth datetime,
+  gender varchar
+);
+
+CREATE TABLE administration(
+  id INT NOT NULL,
+  position varchar
+);
+
+CREATE TABLE staff(
+  id INT NOT NULL,
+  department varchar,
+  bank_account varchar
+);
+
+INSERT INTO students (id, first_name, last_name, email, address, date_of_birth, gender)
+VALUES (1, 'Student 1', 'Last Name 1', 'email1@gmail.com', 'street 1', '1995:20:01', 'Female');
+INSERT INTO students (id, first_name, last_name, email, address, date_of_birth, gender)
+VALUES (2, 'Student 2', 'Last Name 2', 'email2@gmail.com', 'street 2', '1996:21:02', 'Female');
+INSERT INTO students (id, first_name, last_name, email, address, date_of_birth, gender)
+VALUES (3, 'Student 3', 'Last Name 3', 'email3@gmail.com', 'street 3', '1997:22:03', 'Male');
+INSERT INTO students (id, first_name, last_name, email,  address, date_of_birth, gender)
+VALUES (4, 'Student 4', 'Last Name 4', 'email4@gmail.com',  'street 4', '1998:23:04', 'Male');
+
+INSERT INTO staff (id, department, bank_account)
+VALUES (1, 'Academic', 'ABC_001');
+INSERT INTO staff (id, department, bank_account)
+VALUES (2, 'Academic', 'ABC_002');
+INSERT INTO staff (id, department, bank_account)
+VALUES (3, 'Academic', 'ABC_003');
+INSERT INTO staff (id, department, bank_account)
+VALUES (4, 'Academic', 'ABC_004');
+INSERT INTO staff (id, department, bank_account)
+VALUES (5, 'Administration', 'ABC_005');
+INSERT INTO staff (id, department, bank_account)
+VALUES (6, 'Administration', 'ABC_006');
+
+INSERT INTO lecturers (id, first_name, last_name, email, address, date_of_birth, gender)
+VALUES (1, 'Lecturer 1', ' Lecturer Lastname 1', 'lecturer1@gmail.com', 'lecturer street 1', '1990:10:01', 'Female');
+INSERT INTO lecturers (id, first_name, last_name, email, address, date_of_birth, gender)
+VALUES (2, 'Lecturer 2', ' Lecturer Lastname 2', 'lecturer2@gmail.com', 'lecturer street 2', '1991:11:02', 'Female');
+INSERT INTO lecturers (id, first_name, last_name, email, address, date_of_birth, gender)
+VALUES (3, 'Lecturer 3', ' Lecturer Lastname 3', 'lecturer3@gmail.com', 'lecturer street 3', '1992:12:02', 'Male');
+INSERT INTO lecturers (id, first_name, last_name, email, address, date_of_birth, gender)
+VALUES (4, 'Lecturer 4', ' Lecturer Lastname 4', 'lecturer4@gmail.com', 'lecturer street 4', '1993:13:03', 'Male');
+
+INSERT INTO administration (id, position)
+VALUES (5, 'Dean');
+INSERT INTO administration (id, position)
+VALUES (6, 'Program Manager');
+
+ CREATE TABLE subjects (
+  id INT NOT NULL,
+  subject_name varchar,
+  faculty varchar
+);
+
+CREATE TABLE faculty (
+  id INT NOT NULL,
+  faculty_name varchar
+);
+
+CREATE TABLE program (
+  id INT NOT NULL,
+  student int,
+  lecturer int,
+  subject int,
+  faculty int
+);
+
+INSERT INTO subjects (id, subject_name, faculty)
+VALUES (1, 'Web-React', 1);
+INSERT INTO subjects (id, subject_name, faculty)
+VALUES (2, 'Back-End - Python', 1);
+INSERT INTO subjects (id, subject_name, faculty)
+VALUES (3, 'Project Management', 2);
+
+INSERT INTO Faculty (id, faculty_name)
+VALUES (1, 'Software Development');
+INSERT INTO Faculty (id, faculty_name)
+VALUES (2, 'Management');
+
+INSERT INTO Program (id, student, lecturer, subject, faculty)
+VALUES (1, 1, 1, 1, 1);
+INSERT INTO Program (id, student, lecturer, subject, faculty)
+VALUES (2, 1, 1, 2, 1);
+INSERT INTO Program (id, student, lecturer, subject, faculty)
+VALUES (3, 2, 2, 3, 2);
+INSERT INTO Program (id, student, lecturer, subject, faculty)
+VALUES (4, 3, 2, 3, 2);
+INSERT INTO Program (id, student, lecturer, subject, faculty)
+VALUES (5, 4, 3, 2, 1)
+
+---- sample query
+
+SELECT staff.bank_account, lecturers.email
+FROM staff
+LEFT JOIN lecturers ON staff.id = lecturers.id
+ORDER BY staff.bank_account;

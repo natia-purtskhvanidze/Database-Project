@@ -1,0 +1,82 @@
+
+//----------------------------------------------
+
+table students {
+  id int [pk]
+  first_name varchar
+  last_name varchar
+  email varchar
+  address varchar
+  date_of_birth datetime
+  gender varchar
+}
+
+
+table lecturers {
+  id int
+  first_name varchar
+  last_name varchar
+  email varchar
+  address varchar
+  date_of_birth datetime
+  gender varchar
+}
+
+table administration {
+  id int
+  position varchar
+}
+
+table staff {
+  id int [pk]
+  department varchar
+  bank_account varchar
+}
+
+table subjects {
+  id int [pk]
+  subject_name varchar
+  faculty int
+}
+
+table faculty {
+  id int [pk]
+  faculty_name varchar
+}
+
+table program {
+  id int [pk]
+  student int
+  lecturer int
+  subject int
+  faculty int
+}
+
+ref {
+  lecturers.id > staff.id
+}
+
+ref {
+  administration.id > staff.id
+}
+
+
+ref {
+  program.student > students.id
+}
+
+ref {
+  program.lecturer > lecturers.id
+}
+
+ref {
+  program.subject > subjects.id
+}
+
+ref {
+  subjects.faculty > faculty.id
+}
+
+ref {program.faculty > faculty.id
+  
+}
